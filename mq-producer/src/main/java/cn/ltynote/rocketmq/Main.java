@@ -1,10 +1,18 @@
 package cn.ltynote.rocketmq;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 /**
- * @author lty
+ * @author litianyu
+ * @date 2025/7/11
  */
+
+@SpringBootApplication
+@EnableTransactionManagement
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SpringApplication.run(Main.class, args);
     }
 }
