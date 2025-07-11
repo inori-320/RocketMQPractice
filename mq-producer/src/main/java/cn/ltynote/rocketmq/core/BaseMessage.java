@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author 71947
+ * @author litianyu
  * @version 1.0.0
  * @title BaseMessage
  * @create 2025/7/11 14:47

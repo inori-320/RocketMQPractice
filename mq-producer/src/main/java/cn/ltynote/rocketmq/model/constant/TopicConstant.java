@@ -1,7 +1,7 @@
 package cn.ltynote.rocketmq.model.constant;
 
 /**
- * @author 71947
+ * @author litianyu
  * @version 1.0.0
  * @title TopicConstant
  * @create 2025/7/11 15:11

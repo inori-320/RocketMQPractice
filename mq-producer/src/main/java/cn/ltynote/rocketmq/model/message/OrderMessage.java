@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import java.math.BigDecimal;
 
 /**
- * @author 71947
+ * @author litianyu
  * @version 1.0.0
  * @title OrderMessage
  * @create 2025/7/11 14:47

@@ -4,7 +4,7 @@ import cn.ltynote.rocketmq.model.message.OrderMessage;
 import cn.ltynote.rocketmq.model.message.VehicleMessage;
 
 /**
- * @author 71947
+ * @author litianyu
  * @version 1.0.0
  * @title RocketMQProducerService
  * @create 2025/7/11 14:43

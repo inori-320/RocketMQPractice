@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * @author 71947
+ * @author litianyu
  * @version 1.0.0
  * @title ParkingMessage
  * @create 2025/7/11 14:50
@@ -20,10 +20,10 @@ public class VehicleMessage extends BaseMessage {
     private String plateNumber;
     // 车辆类型
     private String carType;
-    // 入口闸机编号
-    private String entryGate;
+    // 闸机编号
+    private String gateId;
     // 入场时间
-    private LocalDateTime entryTime;
+    private LocalDateTime Time;
     // 事件类型
     private EventType eventType;
 
