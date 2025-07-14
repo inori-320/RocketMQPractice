@@ -17,6 +17,4 @@ public class BaseMessage implements Serializable {
     private static final long serialVersionUID = 1L;
     // 消息唯一标识
     private String messageId;
-    // 发送时间
-    private Date sendTime;
 }

@@ -31,6 +31,6 @@ public class OrderMessage extends BaseMessage {
 
     // 状态枚举
     public enum OrderStatus {
-        CREATED, PAID, COMPLETED, CANCELED
+        CREATED, PAID
     }
 }

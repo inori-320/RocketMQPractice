@@ -1,10 +1,10 @@
 package cn.ltynote.rocketmq.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -14,7 +14,10 @@ import java.time.LocalDateTime;
  * @create 2025/7/11 15:41
  */
 @Data
-public class VehicleDTO {
+public class PaymentDTO {
+    @NotBlank
+    private String orderId;
+
     @NotBlank
     private String messageId;
 
@@ -27,5 +30,10 @@ public class VehicleDTO {
     @NotBlank
     private String carType;
 
-    private LocalDateTime Time;
+    // 停放时长
+    private Integer durationMinutes;
+
+    // 支付方式
+    private String paymentType;
+
 }

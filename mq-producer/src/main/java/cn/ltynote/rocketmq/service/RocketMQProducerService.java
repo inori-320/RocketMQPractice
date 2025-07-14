@@ -15,5 +15,5 @@ public interface RocketMQProducerService {
 
     void publishExitEvent(VehicleMessage message);
 
-    void publishPaymentEvent(OrderMessage message);
+    boolean publishPaymentEvent(OrderMessage message);
 }

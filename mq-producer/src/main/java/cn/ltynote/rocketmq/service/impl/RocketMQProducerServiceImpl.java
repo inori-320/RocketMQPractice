@@ -49,7 +49,7 @@ public class RocketMQProducerServiceImpl implements RocketMQProducerService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void publishPaymentEvent(OrderMessage message) {
+    public boolean publishPaymentEvent(OrderMessage message) {
         SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(
                 TopicConstant.PARKING_PAYMENT_TOPIC,
                 MessageBuilder.withPayload(message)
@@ -63,5 +63,6 @@ public class RocketMQProducerServiceImpl implements RocketMQProducerService {
         }
         log.info("[支付事件] 事务消息已提交, orderId={}, status={}",
                 message.getOrderId(), sendResult.getSendStatus());
+        return true;
     }
 }

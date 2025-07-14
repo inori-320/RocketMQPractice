@@ -10,5 +10,4 @@ public class TopicConstant {
     public static final String PARKING_ENTRY_TOPIC = "PARKING_ENTRY_TOPIC";
     public static final String PARKING_EXIT_TOPIC = "PARKING_EXIT_TOPIC";
     public static final String PARKING_PAYMENT_TOPIC = "PARKING_PAYMENT_TOPIC";
-    public static final String PAYMENT_GROUP = "PAYMENT_GROUP";
 }

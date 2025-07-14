@@ -22,7 +22,7 @@ public class VehicleMessage extends BaseMessage {
     private String carType;
     // 闸机编号
     private String gateId;
-    // 入场时间
+    // 时间
     private LocalDateTime Time;
     // 事件类型
     private EventType eventType;
