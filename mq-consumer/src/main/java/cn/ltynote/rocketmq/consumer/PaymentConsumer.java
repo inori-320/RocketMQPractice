@@ -1,5 +1,6 @@
 package cn.ltynote.rocketmq.consumer;
 
+import cn.ltynote.rocketmq.model.constant.TopicConstant;
 import cn.ltynote.rocketmq.model.message.OrderMessage;
 import cn.ltynote.rocketmq.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,11 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@RocketMQMessageListener(topic = "payment-topic", consumerGroup = "consumer-group")
+@RocketMQMessageListener(
+        topic = TopicConstant.PAYMENT_TOPIC,
+        selectorExpression = TopicConstant.TAG_PAYMENT,
+        consumerGroup = "payment_group"
+)
 public class PaymentConsumer implements RocketMQListener<OrderMessage> {
     @Autowired
     private PaymentService paymentService;

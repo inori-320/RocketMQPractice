@@ -11,6 +11,7 @@ import cn.ltynote.rocketmq.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -34,6 +35,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void handleMessage(OrderMessage message) {
         PaymentPO po = new PaymentPO();
         po.setMessageId(message.getMessageId());

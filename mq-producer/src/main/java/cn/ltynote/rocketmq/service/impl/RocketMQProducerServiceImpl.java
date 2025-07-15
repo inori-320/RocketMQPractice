@@ -30,7 +30,7 @@ public class RocketMQProducerServiceImpl implements RocketMQProducerService {
     @Override
     public void publishEntryEvent(VehicleMessage message) {
         rocketMQTemplate.syncSendOrderly(
-                TopicConstant.PARKING_ENTRY_TOPIC,
+                TopicConstant.VEHICLE_TOPIC + ":" + TopicConstant.TAG_ENTRY,
                 MessageBuilder.withPayload(message).build(),
                 message.getMessageId()
         );
@@ -40,7 +40,7 @@ public class RocketMQProducerServiceImpl implements RocketMQProducerService {
     @Override
     public void publishExitEvent(VehicleMessage message) {
         rocketMQTemplate.syncSendOrderly(
-                TopicConstant.PARKING_EXIT_TOPIC,
+                TopicConstant.VEHICLE_TOPIC + ":" + TopicConstant.TAG_EXIT,
                 MessageBuilder.withPayload(message).build(),
                 message.getMessageId()
         );
@@ -48,20 +48,19 @@ public class RocketMQProducerServiceImpl implements RocketMQProducerService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public boolean publishPaymentEvent(OrderMessage message) {
-        SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(
-                TopicConstant.PARKING_PAYMENT_TOPIC,
+        SendResult sendResult = rocketMQTemplate.syncSendOrderly(
+                TopicConstant.PAYMENT_TOPIC + ":" + TopicConstant.TAG_PAYMENT,
                 MessageBuilder.withPayload(message)
                         .setHeader("order_id", message.getOrderId())
                         .setHeader("payment_type", message.getPaymentType())
                         .build(),
-                message
+                message.getMessageId()
         );
         if (!Objects.equals(sendResult.getSendStatus(), SendStatus.SEND_OK)) {
             throw new RuntimeException("支付消息发送失败: " + sendResult);
         }
-        log.info("[支付事件] 事务消息已提交, orderId={}, status={}",
+        log.info("[支付事件] 已发送, orderId={}, status={}",
                 message.getOrderId(), sendResult.getSendStatus());
         return true;
     }

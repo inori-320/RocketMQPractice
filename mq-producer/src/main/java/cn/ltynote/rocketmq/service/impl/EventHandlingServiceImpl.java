@@ -7,10 +7,8 @@ import cn.ltynote.rocketmq.model.message.VehicleMessage;
 import cn.ltynote.rocketmq.model.vo.DataVO;
 import cn.ltynote.rocketmq.service.EventHandlingService;
 import cn.ltynote.rocketmq.service.RocketMQProducerService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -89,7 +87,6 @@ public class EventHandlingServiceImpl implements EventHandlingService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public DataVO payment(PaymentDTO dto) {
         OrderMessage message = new OrderMessage();
         message.setMessageId(dto.getMessageId());

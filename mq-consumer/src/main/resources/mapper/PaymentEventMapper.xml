@@ -11,9 +11,9 @@
 
     <insert id="savePaymentEvent" parameterType="cn.ltynote.rocketmq.model.po.PaymentPO">
         INSERT INTO payment_event
-        (message_id, order_id, plate_number, car_type, payment_type, duration_minutes, amount, status, payment_time, created_at)
+        (message_id, order_id, plate_number, payment_type, duration_minutes, amount, status, payment_time)
         VALUES
-            (#{messageId}, #{orderId}, #{plateNumber}, #{carType}, #{paymentType}, #{durationMinutes}, #{amount}, #{status}, #{paymentTime}, #{createdAt})
+            (#{messageId}, #{orderId}, #{plateNumber}, #{paymentType}, #{durationMinutes}, #{amount}, #{status}, #{paymentTime})
     </insert>
 
 </mapper>

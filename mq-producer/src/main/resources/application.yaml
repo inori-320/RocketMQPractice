@@ -1,4 +1,18 @@
 rocketmq:
-  producer:
-    group: producer-group
   name-server: 192.168.145.131:9876
+  producer:
+    group: producer-group-demo
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.145.131:3306/parking?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: user
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mybatis-plus:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: cn.ltynote.rocketmq.model.po
+server:
+  port: 8080

@@ -1,5 +1,6 @@
 package cn.ltynote.rocketmq.consumer;
 
+import cn.ltynote.rocketmq.model.constant.TopicConstant;
 import cn.ltynote.rocketmq.model.dto.VehicleDTO;
 import cn.ltynote.rocketmq.model.message.VehicleMessage;
 import cn.ltynote.rocketmq.service.VehicleService;
@@ -19,7 +20,11 @@ import java.time.LocalDateTime;
  */
 @Slf4j
 @Service
-@RocketMQMessageListener(topic = "vehicle-topic", consumerGroup = "consumer-group")
+@RocketMQMessageListener(
+        topic = TopicConstant.VEHICLE_TOPIC,
+        selectorExpression = TopicConstant.TAG_ENTRY + " || " + TopicConstant.TAG_EXIT,
+        consumerGroup = "vehicle_consumer_group"
+)
 public class VehicleConsumer implements RocketMQListener<VehicleMessage> {
     @Autowired
     private VehicleService vehicleService;
