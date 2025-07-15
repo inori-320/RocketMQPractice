@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ltynote.rocketmq.mapper.VehicleEventMapper">
+
+    <insert id="saveVehicleEvent" parameterType="cn.ltynote.rocketmq.model.po.VehiclePO">
+        INSERT INTO vehicle_event
+        (message_id, plate_number, car_type, gate_id, event_type, event_time, created_at)
+        VALUES
+        (#{messageId}, #{plateNumber}, #{carType}, #{gateId}, #{eventType}, #{eventTime}, #{createdAt})
+    </insert>
+
+    <select id="countByMessageId" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM vehicle_event
+        <where>
+            message_id = #{messageId}
+        </where>
+    </select>
+</mapper>

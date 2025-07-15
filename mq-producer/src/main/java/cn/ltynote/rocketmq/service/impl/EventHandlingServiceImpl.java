@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -97,6 +98,7 @@ public class EventHandlingServiceImpl implements EventHandlingService {
         message.setPaymentType(dto.getPaymentType());
         message.setDurationMinutes(dto.getDurationMinutes());
         message.setStatus(OrderMessage.OrderStatus.CREATED);
+        message.setPaymentTime(LocalDateTime.now());
         BigDecimal amount = calculateParkingFee(dto.getDurationMinutes(), dto.getCarType());
         message.setAmount(amount);
         boolean status = rocketMQProducerService.publishPaymentEvent(message);

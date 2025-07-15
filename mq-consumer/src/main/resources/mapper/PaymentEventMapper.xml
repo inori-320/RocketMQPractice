@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ltynote.rocketmq.mapper.PaymentEventMapper">
+
+    <select id="countByMessageId" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM payment_event WHERE message_id = #{messageId}
+    </select>
+
+    <insert id="savePaymentEvent" parameterType="cn.ltynote.rocketmq.model.po.PaymentPO">
+        INSERT INTO payment_event
+        (message_id, order_id, plate_number, car_type, payment_type, duration_minutes, amount, status, payment_time, created_at)
+        VALUES
+            (#{messageId}, #{orderId}, #{plateNumber}, #{carType}, #{paymentType}, #{durationMinutes}, #{amount}, #{status}, #{paymentTime}, #{createdAt})
+    </insert>
+
+</mapper>

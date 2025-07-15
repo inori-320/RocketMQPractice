@@ -17,7 +17,6 @@ public class PaymentPO {
     private String messageId;
     private String orderId;
     private String plateNumber;
-    private String carType;
     private String paymentType;
     private Integer durationMinutes;
     private BigDecimal amount;

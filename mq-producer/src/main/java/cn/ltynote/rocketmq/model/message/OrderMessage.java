@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * @author litianyu
@@ -28,6 +29,8 @@ public class OrderMessage extends BaseMessage {
     private Integer durationMinutes;
     // 订单状态
     private OrderStatus status;
+    // 支付时间
+    private LocalDateTime paymentTime;
 
     // 状态枚举
     public enum OrderStatus {
